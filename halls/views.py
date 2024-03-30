@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
@@ -17,10 +17,11 @@ import requests
 YOUTUBE_API_KEY = 'AIzaSyCYFRWf0cWb_ze3evzrOMPsl2kqbADchhY'
 
 
+
 def home(request):
     recent_halls = Hall.objects.all().order_by('-id')[:3]
-    popular_halls = [Hall.objects.get(pk=1),Hall.objects.get(pk=2),Hall.objects.get(pk=3)]
-    return render(request, 'halls/home.html', {'recent_halls':recent_halls, 'popular_halls':popular_halls})
+    popular_halls = Hall.objects.all()[:3]  # Example: Fetching first 3 halls
+    return render(request, 'halls/home.html', {'recent_halls': recent_halls, 'popular_halls': popular_halls})
 
 @login_required
 def dashboard(request):
