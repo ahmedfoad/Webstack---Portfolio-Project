@@ -1,0 +1,25 @@
+pipenv shell
+
+##run server
+python manage.py runserver 
+
+
+## DB Migration
+python manage.py makemigrations
+python manage.py migrate 
+
+## After createing DB Migration we need to create super user
+python manage.py createsuperuser
+
+## if you have any issue for DB Migration
+## Manually Check for Model Changes
+python manage.py makemigrations --empty halls
+python manage.py makemigrations
+python manage.py migrate
+
+
+## Styling
+pip install django-widget-tweaks
+
+## Google API key
+AIzaSyCYFRWf0cWb_ze3evzrOMPsl2kqbADchhY
